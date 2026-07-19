@@ -109,6 +109,94 @@
             }
         }
 
+
+        /* ───────────── REALISTIC LOADING OVERLAY ───────────── */
+        #sectionLoader {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            background: rgba(5, 5, 8, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+        #sectionLoader.open { display: flex; }
+        .section-loader-box {
+            width: min(300px, calc(100vw - 40px));
+            padding: 28px 22px;
+            border-radius: 22px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,.45);
+        }
+        .loader-spinner {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 14px;
+            border: 3px solid rgba(255,255,255,.12);
+            border-top-color: var(--red);
+            border-radius: 50%;
+            animation: sportySpin .8s linear infinite;
+        }
+        @keyframes sportySpin { to { transform: rotate(360deg); } }
+        .section-loader-box strong {
+            display: block;
+            font-size: 18px;
+            color: var(--text-primary);
+        }
+        .section-loader-box span {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* ───────────── TRANSACTION RECORDS ───────────── */
+        #transactionModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 5001;
+            background: var(--auth-modal-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        #transactionModal.open { display: flex; }
+        #transactionModal > div {
+            width: 100%;
+            max-width: 540px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 24px;
+            border-radius: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(0,0,0,.6);
+        }
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 14px;
+            margin-bottom: 7px;
+            border-radius: 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+        }
+        .transaction-item .tx-main { min-width: 0; }
+        .transaction-item .tx-title { font-weight: 700; color: var(--text-primary); }
+        .transaction-item .tx-time { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .transaction-item .tx-amount { font-weight: 800; white-space: nowrap; }
+        .transaction-item.deposit .tx-amount { color: #4caf50; }
+        .transaction-item.withdraw .tx-amount { color: var(--red); }
+
         /* ───────────── HEADER ───────────── */
         .header {
             display: flex;
@@ -2493,6 +2581,20 @@
                         </div>
 
                         <!-- History Modal -->
+
+                        <!-- Transaction Records Modal -->
+                        <div id="transactionModal">
+                            <div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                                    <h2 style="font-family:'Orbitron',monospace;font-size:22px;color:var(--text-primary);">📋 Transactions</h2>
+                                    <button id="closeTransactionBtn" style="background:none;border:none;color:var(--text-secondary);font-size:30px;cursor:pointer;">&times;</button>
+                                </div>
+                                <div id="transactionList">
+                                    <div style="text-align:center;color:var(--text-muted);padding:24px;font-size:16px;">No transactions yet.</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div id="historyModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--auth-modal-bg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:5000;padding:16px;justify-content:center;align-items:center;">
                             <div style="background:var(--bg-card);border-radius:24px;padding:24px;max-width:540px;width:100%;max-height:80vh;overflow-y:auto;border:1px solid var(--border-color);box-shadow:0 20px 60px rgba(0,0,0,0.6);">
                                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
@@ -2613,6 +2715,17 @@
 
     </div><!-- /app -->
 
+    <!-- Section loading overlay -->
+    <div id="sectionLoader">
+        <div class="section-loader-box">
+            <div class="loader-spinner"></div>
+            <strong id="loaderTitle">Loading...</strong>
+            <span id="loaderSubtitle">Preparing your section</span>
+        </div>
+    </div>
+
+
+
     <script>
         // ═══════════════════════════════════════════════════════════════
         //  CONFIG
@@ -2649,6 +2762,7 @@
             points: [],
         };
         let aviatorHistoryData = [];
+        let transactionData = [];
 
         // Spin state
         let spinState = {
@@ -2739,6 +2853,14 @@
         const hTotal = $('hTotal');
         const hWins = $('hWins');
         const hLosses = $('hLosses');
+        const transactionModal = $('transactionModal');
+        const closeTransactionBtn = $('closeTransactionBtn');
+        const transactionList = $('transactionList');
+        const transactionMenuItem = document.querySelector('.me-menu .menu-item:nth-child(2)');
+        const sectionLoader = $('sectionLoader');
+        const loaderTitle = $('loaderTitle');
+        const loaderSubtitle = $('loaderSubtitle');
+
 
         // Aviator
         const canvas = $('aviatorCanvas');
@@ -2958,6 +3080,7 @@
                         phone: currentUser.phone,
                         aviatorHistory: currentUser.aviatorHistory || [],
                         spinHistory: currentUser.spinHistory || [],
+                        transactions: currentUser.transactions || [],
                     }));
                 } catch (e) { /* ignore */ }
             } else {
@@ -3068,6 +3191,7 @@
             if (currentUser) {
                 aviatorHistoryData = currentUser.aviatorHistory || [];
                 spinHistoryData = currentUser.spinHistory || [];
+                transactionData = currentUser.transactions || [];
                 updateAviatorHistory();
                 updateSpinHistory();
             }
@@ -3081,6 +3205,7 @@
                 if (data.users[currentUser.username]) {
                     data.users[currentUser.username].aviatorHistory = aviatorHistoryData;
                     data.users[currentUser.username].spinHistory = spinHistoryData;
+                    data.users[currentUser.username].transactions = transactionData;
                     await jsonBinSave(data);
                     saveSession();
                 }
@@ -3137,6 +3262,11 @@
         }
 
         historyMenuItem.addEventListener('click', showHistoryModal);
+        if (transactionMenuItem) transactionMenuItem.addEventListener('click', showTransactionModal);
+        if (closeTransactionBtn) closeTransactionBtn.addEventListener('click', hideTransactionModal);
+        if (transactionModal) transactionModal.addEventListener('click', (e) => {
+            if (e.target === transactionModal) hideTransactionModal();
+        });
         closeHistoryBtn.addEventListener('click', hideHistoryModal);
         historyModal.addEventListener('click', (e) => {
             if (e.target === historyModal) hideHistoryModal();
@@ -3355,6 +3485,7 @@
                     verified: false,
                     aviatorHistory: [],
                     spinHistory: [],
+                    transactions: [],
                     createdAt: new Date().toISOString(),
                 };
                 users[username] = userData;
@@ -3541,6 +3672,64 @@
             saveBalance();
         }
 
+
+        function showSectionLoader(title = 'Loading...', subtitle = 'Preparing your section', duration = 2200) {
+            loaderTitle.textContent = title;
+            loaderSubtitle.textContent = subtitle;
+            sectionLoader.classList.add('open');
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    sectionLoader.classList.remove('open');
+                    resolve();
+                }, duration);
+            });
+        }
+
+        function recordTransaction(type, amount, details = '') {
+            if (!currentUser || !amount) return;
+            transactionData.unshift({
+                type,
+                amount: Number(amount),
+                details,
+                timestamp: new Date().toISOString()
+            });
+            transactionData = transactionData.slice(0, 100);
+            currentUser.transactions = transactionData;
+            saveSession();
+            saveBalance();
+        }
+
+        function renderTransactions() {
+            if (!transactionList) return;
+            if (!transactionData.length) {
+                transactionList.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:24px;font-size:16px;">No transactions yet.</div>';
+                return;
+            }
+            transactionList.innerHTML = transactionData.slice(0, 100).map(tx => {
+                const isDeposit = tx.type === 'deposit';
+                const sign = isDeposit ? '+' : '-';
+                const label = isDeposit ? '💰 Deposit' : '💸 Withdrawal';
+                const details = tx.details ? ` • ${tx.details}` : '';
+                return `<div class="transaction-item ${isDeposit ? 'deposit' : 'withdraw'}">
+                    <div class="tx-main">
+                        <div class="tx-title">${label}</div>
+                        <div class="tx-time">${new Date(tx.timestamp).toLocaleString()}${details}</div>
+                    </div>
+                    <div class="tx-amount">${sign}₦${formatNum(tx.amount)}</div>
+                </div>`;
+            }).join('');
+        }
+
+        async function showTransactionModal() {
+            renderTransactions();
+            transactionModal.classList.add('open');
+            await showSectionLoader('Loading transactions', 'Retrieving your transaction records', 1800);
+        }
+
+        function hideTransactionModal() {
+            transactionModal.classList.remove('open');
+        }
+
         // ─── NAVIGATION ───
 
         function showPage(pageId) {
@@ -3593,8 +3782,10 @@
                 requireAuth(() => {
                     if (game === 'aviator') {
                         showPage('aviatorPage');
+                        showSectionLoader('Loading Aviator', 'Connecting to the game round', 2200);
                     } else if (game === 'spin') {
                         showPage('spinPage');
+                        showSectionLoader('Loading Spin', 'Preparing the bottle round', 2200);
                     }
                 });
             });
@@ -3943,7 +4134,7 @@
             aviatorState.multiplier = 1.0;
             aviatorState.betAmount = bet;
             aviatorState.startTime = performance.now();
-            aviatorState.crashMultiplier = getAviatorCrashMultiplier(bet);
+            aviatorState.crashMultiplier = getAviatorCrashMultiplier();
             aviatorState.points = [{ x: 0, y: 1.0 }];
 
             graphPoints = [{ x: 0, y: 1.0 }];
@@ -4052,19 +4243,18 @@
             drawGraph([], 1.0, false, false);
         }
 
-        function getAviatorCrashMultiplier(bet) {
+        // Transparent fixed-probability round generation.
+        // The outcome is independent of the player's bet amount and cash-out behavior.
+        function getAviatorCrashMultiplier() {
             const base = Math.random();
-            const betFactor = 1 + Math.min(bet / 50, 5);
+            // A simple fixed distribution: most rounds end between 1.00x and 3.00x,
+            // with occasional higher multipliers. Bet size does not alter the odds.
             let crash;
-            if (betFactor > 1) {
-                const skew = Math.pow(base, 1 / betFactor);
-                crash = 1.0 + skew * (14 / (1 + bet * 0.015));
-            } else {
-                crash = 1.0 + base * 14;
-            }
-            crash = clamp(crash, 1.01, 40);
-            crash += (Math.random() - 0.5) * 0.2;
-            return Math.max(1.01, crash);
+            if (base < 0.55) crash = 1.01 + Math.random() * 1.49;
+            else if (base < 0.88) crash = 2.50 + Math.random() * 3.50;
+            else if (base < 0.98) crash = 6.00 + Math.random() * 9.00;
+            else crash = 15.00 + Math.random() * 25.00;
+            return clamp(crash, 1.01, 40);
         }
 
         function updateAviatorHistory() {
@@ -4134,6 +4324,7 @@
             spinResult.className = 'result-box info';
             spinStatus.textContent = '🌀 spinning...';
 
+            // Fixed 50/50 outcome independent of bet amount.
             const result = Math.random() < 0.5 ? 'up' : 'down';
             spinState.result = result;
 
@@ -4221,6 +4412,7 @@
                 return;
             }
             addBalance(amount);
+            recordTransaction('deposit', amount, 'Balance credited');
             depositStatus.textContent = `✅ Deposited ₦${amount} successfully!`;
             depositStatus.className = 'me-status success';
             depositAmount.value = '';
@@ -4263,7 +4455,7 @@
 
             currentUser.balance -= amount;
             updateBalanceUI();
-            saveBalance();
+            recordTransaction('withdraw', amount, `${bank} • ${account}`);
             withdrawStatus.textContent =
                 `✅ Withdrawal of ₦${amount} to ${bank} (${account}) initiated successfully!`;
             withdrawStatus.className = 'me-status success';
@@ -4887,6 +5079,9 @@
                 }
                 if (historyModal.style.display === 'flex') {
                     hideHistoryModal();
+                }
+                if (transactionModal && transactionModal.classList.contains('open')) {
+                    hideTransactionModal();
                 }
             }
         });
