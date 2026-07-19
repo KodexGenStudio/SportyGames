@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover" />
-    <title>Sporty Games</title>
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNwb3J0eSBHYW1lcyIsCiAgInNob3J0X25hbWUiOiAiU3BvcnR5R2FtZXMiLAogICJkZXNjcmlwdGlvbiI6ICJTcG9ydHkgR2FtZXMgLSBCZXQgYW5kIFdpbiIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGEwYTBhIiwKICAidGhlbWVfY29sb3IiOiAiI2U1MzkzNSIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RwaGppY2dpci9pbWFnZS91cGxvYWQvZl93ZWJwL3dfMjU2L3FfODAvdjE3NjEyMDU2MzQvU3BvcnR5X0JldF9Mb2dvXzU0NTM4YmM3YjFfMDJiMTYyMmQxMC5wbmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHBoaWpja2dpci9pbWFnZS91cGxvYWQvZl93ZWJwL3dfNTEyL3FfODAvdjE3NjEyMDU2MzQvU3BvcnR5X0JldF9Mb2dvXzU0NTM4YmM3YjFfMDJiMTYyMmQxMC5wbmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0KICBdCn0=" />
+    <title>Sporty Games – Aviator</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNwb3J0eSBHYW1lcyIsCiAgInNob3J0X25hbWUiOiAiU3BvcnR5R2FtZXMiLAogICJkZXNjcmlwdGlvbiI6ICJTcG9ydHkgR2FtZXMgLSBCZXQgYW5kIFdpbiIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGEwYTBhIiwKICAidGhlbWVfY29sb3IiOiAiI2U1MzkzNSIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vcmVzLmNsb3VkaW5hcnkuY29tL2RwaGppY2dpci9pbWFnZS91cGxvYWQvZl93ZWJwL3dfMjU2L3FfODAvdjE3NjEyMDU2MzQvU3BvcnR5X0JldF9Mb2dvXzU0NTM4YmM3YjFfMDJiMTYyMmQxMC5wbmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHBoaWpja2dpci9pbWFnZS91cGxvYWQvZl93ZWJwL3dfNTEyL3FfODAvdjE3NjEyMDU2MzQvU3BvcnR5X0JldF9Mb2dvXzU0NTM4YmM3YjFfMDJiMTYyMmQxMC5wbmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0KICBdCn0=" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>
@@ -445,50 +445,38 @@
             color: var(--red);
         }
 
-        /* ─── AVIATOR GAME ─── */
+        /* ─── AVIATOR GAME (SCROLLING GRAPH) ─── */
         .aviator-game {
-            background: var(--bg-primary);
+            background: #0a0e1a;
             border-radius: 20px;
             border: 1px solid var(--border-color);
-            padding: 16px;
+            padding: 0;
             position: relative;
-            min-height: 220px;
             overflow: hidden;
-            background: linear-gradient(180deg, #0a0a2a 0%, #0f1a3a 50%, #0a0a1a 100%);
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
         }
-        .aviator-game .sky {
+        .aviator-game .graph-wrap {
             position: relative;
             width: 100%;
-            height: 190px;
+            flex: 1;
+            min-height: 280px;
+            background: radial-gradient(ellipse at 50% 80%, #0f1a2e, #060a14);
         }
-        .aviator-game .plane {
-            position: absolute;
-            font-size: 52px;
-            transition: none;
-            will-change: transform;
-            z-index: 2;
-            filter: drop-shadow(0 0 30px rgba(229, 57, 53, 0.3));
-            pointer-events: none;
+        .aviator-game .graph-wrap canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
         }
-        .aviator-game .trail {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .aviator-game .trail .dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(229, 57, 53, 0.3);
-            transform: translate(-50%, -50%);
-        }
-        .aviator-game .multiplier-display {
+        .aviator-game .multiplier-overlay {
             position: absolute;
             top: 16px;
             left: 18px;
+            z-index: 10;
             font-family: 'Orbitron', monospace;
-            font-size: 34px;
+            font-size: 36px;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 40px rgba(229, 57, 53, 0.15);
@@ -498,28 +486,102 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            z-index: 3;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
         }
-        .aviator-game .multiplier-display.green {
+        .aviator-game .multiplier-overlay.green {
             color: #4caf50;
         }
-        .aviator-game .multiplier-display.red {
+        .aviator-game .multiplier-overlay.red {
             color: var(--red);
         }
-        .aviator-game .status-badge {
+        .aviator-game .status-overlay {
             position: absolute;
             top: 16px;
             right: 18px;
-            font-size: 15px;
+            z-index: 10;
+            font-size: 14px;
             font-weight: 700;
             color: var(--text-secondary);
             background: rgba(0, 0, 0, 0.5);
-            padding: 6px 20px;
+            padding: 6px 18px;
             border-radius: 20px;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .aviator-game .status-overlay .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .aviator-game .status-overlay .dot.green {
+            background: #4caf50;
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+        }
+        .aviator-game .status-overlay .dot.red {
+            background: var(--red);
+            box-shadow: 0 0 12px rgba(229, 57, 53, 0.4);
+        }
+        .aviator-game .status-overlay .dot.yellow {
+            background: #ffd700;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ─── AVIATOR HISTORY CHIPS ─── */
+        .aviator-history {
+            display: flex;
+            gap: 6px;
+            padding: 10px 14px 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            flex-wrap: wrap;
+            align-items: center;
+            min-height: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        .aviator-history .history-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-right: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .aviator-history .chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            color: var(--text-secondary);
+            transition: 0.2s;
+            min-width: 32px;
+            text-align: center;
+        }
+        .aviator-history .chip.win {
+            color: #4caf50;
+            border-color: rgba(76, 175, 80, 0.15);
+            background: rgba(76, 175, 80, 0.06);
+        }
+        .aviator-history .chip.lose {
+            color: var(--red);
+            border-color: rgba(229, 57, 53, 0.15);
+            background: rgba(229, 57, 53, 0.06);
+        }
+        .aviator-history .chip.current {
+            color: #ffd700;
+            border-color: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.06);
         }
 
         /* ─── SPIN GAME ─── */
@@ -637,6 +699,11 @@
             color: var(--text-primary);
             border-color: var(--red);
         }
+        .bet-controls .bet-presets button.active {
+            background: rgba(229, 57, 53, 0.12);
+            border-color: var(--red);
+            color: var(--red);
+        }
 
         .action-btn {
             padding: 14px 28px;
@@ -724,38 +791,6 @@
             background: var(--bg-card);
             border-color: var(--border-color);
             color: var(--text-secondary);
-        }
-
-        .history-dots {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            padding: 6px 0;
-            max-height: 42px;
-            overflow: hidden;
-        }
-        .history-dots .dot {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-        .history-dots .dot.win {
-            background: rgba(76, 175, 80, 0.08);
-            border-color: rgba(76, 175, 80, 0.12);
-            color: #4caf50;
-        }
-        .history-dots .dot.lose {
-            background: rgba(229, 57, 53, 0.08);
-            border-color: rgba(229, 57, 53, 0.12);
-            color: var(--red);
         }
 
         /* ─── SPIN DIRECTION BUTTONS ─── */
@@ -1822,7 +1857,7 @@
         #historyModal[style*="display: flex"] {
             display: flex !important;
         }
-        #historyModal > div {
+        #historyModal>div {
             background: var(--bg-card);
             border-radius: 24px;
             padding: 24px;
@@ -1900,18 +1935,25 @@
                 font-size: 16px;
                 padding: 14px 18px;
             }
-            .aviator-game .multiplier-display {
-                font-size: 26px;
+            .aviator-game .multiplier-overlay {
+                font-size: 28px;
                 padding: 3px 16px;
+                top: 12px;
+                left: 14px;
             }
-            .aviator-game .plane {
-                font-size: 40px;
+            .aviator-game .graph-wrap {
+                min-height: 220px;
             }
-            .aviator-game .sky {
-                height: 160px;
+            .aviator-game .status-overlay {
+                font-size: 12px;
+                padding: 4px 14px;
+                top: 12px;
+                right: 14px;
             }
-            .aviator-game {
-                min-height: 185px;
+            .aviator-history .chip {
+                font-size: 12px;
+                padding: 2px 8px;
+                min-width: 28px;
             }
             .spin-game .bottle {
                 width: 70px;
@@ -1960,7 +2002,7 @@
             .bottom-tabs .tab-item .tab-label {
                 font-size: 11px;
             }
-            #historyModal > div {
+            #historyModal>div {
                 padding: 18px;
             }
             .game-header .game-title-wrap h2 {
@@ -1977,11 +2019,6 @@
                 font-size: 15px;
                 padding: 12px 16px;
                 min-height: 46px;
-            }
-            .history-dots .dot {
-                width: 28px;
-                height: 28px;
-                font-size: 10px;
             }
             .header-left .logo-text {
                 font-size: 18px;
@@ -2031,18 +2068,21 @@
                 font-size: 13px;
                 padding: 2px 10px 2px 6px;
             }
-            .aviator-game .plane {
-                font-size: 32px;
-            }
-            .aviator-game .multiplier-display {
+            .aviator-game .multiplier-overlay {
                 font-size: 22px;
                 padding: 2px 12px;
             }
-            .aviator-game .sky {
-                height: 130px;
+            .aviator-game .graph-wrap {
+                min-height: 180px;
             }
-            .aviator-game {
-                min-height: 155px;
+            .aviator-game .status-overlay {
+                font-size: 10px;
+                padding: 2px 10px;
+            }
+            .aviator-history .chip {
+                font-size: 10px;
+                padding: 1px 6px;
+                min-width: 22px;
             }
             .spin-game .bottle {
                 width: 60px;
@@ -2102,6 +2142,60 @@
             font-weight: 700;
             z-index: 9999;
             box-shadow: 0 2px 10px rgba(156, 39, 176, 0.3);
+        }
+
+        /* ─── KEYFRAMES ─── */
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+        .spin-game .history-dots {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            padding: 6px 0;
+            max-height: 42px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            right: 16px;
+            z-index: 5;
+        }
+        .spin-game .history-dots .dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .spin-game .history-dots .dot.win {
+            background: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.12);
+            color: #4caf50;
+        }
+        .spin-game .history-dots .dot.lose {
+            background: rgba(229, 57, 53, 0.08);
+            border: 1px solid rgba(229, 57, 53, 0.12);
+            color: var(--red);
         }
     </style>
 </head>
@@ -2199,12 +2293,19 @@
                         </div>
                     </div>
 
+                    <!-- ─── AVIATOR GRAPH (SCROLLING) ─── -->
                     <div class="aviator-game" id="aviatorGame">
-                        <div class="sky" id="aviatorSky">
-                            <div class="plane" id="aviatorPlane" style="left:15%;top:60%;">✈️</div>
-                            <div class="trail" id="aviatorTrail"></div>
-                            <div class="multiplier-display green" id="aviatorMultiplier">1.00x</div>
-                            <div class="status-badge" id="aviatorStatus">🟢 waiting</div>
+                        <div class="graph-wrap" id="graphWrap">
+                            <canvas id="aviatorCanvas"></canvas>
+                            <div class="multiplier-overlay green" id="aviatorMultiplier">1.00x</div>
+                            <div class="status-overlay" id="aviatorStatus">
+                                <span class="dot green" id="statusDot"></span>
+                                <span id="statusText">waiting</span>
+                            </div>
+                        </div>
+                        <div class="aviator-history" id="aviatorHistoryWrap">
+                            <span class="history-label">HISTORY</span>
+                            <div id="aviatorHistoryChips" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
                         </div>
                     </div>
 
@@ -2221,12 +2322,11 @@
                     </div>
 
                     <div class="game-row">
-                        <button class="action-btn primary" id="aviatorStartBtn">🛫 Fly</button>
-                        <button class="action-btn success" id="aviatorCashBtn" disabled>💰 Cash Out</button>
+                        <button class="action-btn primary" id="aviatorStartBtn">Fly</button>
+                        <button class="action-btn success" id="aviatorCashBtn" disabled>Cash Out</button>
                     </div>
 
                     <div class="result-box info" id="aviatorResult">Place a bet and fly!</div>
-                    <div class="history-dots" id="aviatorHistory"></div>
                 </div>
             </div>
 
@@ -2249,6 +2349,7 @@
                             <img src="https://raw.githubusercontent.com/KodexGenStudio/SportyGames/refs/heads/main/images__2_-removebg-preview.png" alt="Bottle" class="bottle idle" id="spinBottle" />
                             <div class="direction-label" id="spinStatus">🎯 pick a direction</div>
                         </div>
+                        <div class="history-dots" id="spinHistoryDots"></div>
                     </div>
 
                     <div class="bet-controls">
@@ -2269,7 +2370,6 @@
                     </div>
 
                     <div class="result-box info" id="spinResult">Place a bet and pick a direction!</div>
-                    <div class="history-dots" id="spinHistory"></div>
                 </div>
             </div>
 
@@ -2546,6 +2646,7 @@
             animationId: null,
             startTime: 0,
             crashMultiplier: 0,
+            points: [],
         };
         let aviatorHistoryData = [];
 
@@ -2640,16 +2741,18 @@
         const hLosses = $('hLosses');
 
         // Aviator
-        const aviatorPlane = $('aviatorPlane');
-        const aviatorTrail = $('aviatorTrail');
+        const canvas = $('aviatorCanvas');
+        const ctx = canvas.getContext('2d');
+        const graphWrap = $('graphWrap');
         const aviatorMultiplier = $('aviatorMultiplier');
         const aviatorStatus = $('aviatorStatus');
-        const aviatorSky = $('aviatorSky');
+        const statusDot = $('statusDot');
+        const statusText = $('statusText');
         const aviBet = $('aviatorBet');
         const aviStartBtn = $('aviatorStartBtn');
         const aviCashBtn = $('aviatorCashBtn');
         const aviResult = $('aviatorResult');
-        const aviHistory = $('aviatorHistory');
+        const aviHistoryChips = $('aviatorHistoryChips');
         const aviPresets = aviBet.closest('.bet-controls').querySelectorAll('.bet-presets button');
         const aviBackBtn = $('aviatorBackBtn');
 
@@ -2658,11 +2761,11 @@
         const spinStatus = $('spinStatus');
         const spinBet = $('spinBet');
         const spinResult = $('spinResult');
-        const spinHistory = $('spinHistory');
         const spinPresets = spinBet.closest('.bet-controls').querySelectorAll('.bet-presets button');
         const spinUpBtn = $('spinUpBtn');
         const spinDownBtn = $('spinDownBtn');
         const spinBackBtn = $('spinBackBtn');
+        const spinHistoryDots = $('spinHistoryDots');
 
         // Me
         const toggleDepositBtn = $('toggleDepositBtn');
@@ -2931,7 +3034,6 @@
                 }
 
                 loadHistory();
-
                 document.querySelectorAll('.game-card[data-game]').forEach(card => {
                     const overlay = card.querySelector('.auth-overlay');
                     if (overlay) overlay.style.display = 'none';
@@ -3015,11 +3117,11 @@
                     (game.bet ? `-₦${game.bet}` : '');
                 const time = new Date(game.timestamp).toLocaleString();
                 item.innerHTML = `
-                    <span><strong>${gameType}</strong> <span style="color:var(--text-muted);font-size:13px;">${detail}</span></span>
-                    <span style="color:${isWin ? '#4caf50' : 'var(--red)'};font-weight:600;">${isWin ? '✅ Win' : '❌ Loss'}</span>
-                    <span style="color:${isWin ? '#4caf50' : 'var(--red)'};font-weight:700;">${amount}</span>
-                    <span style="color:var(--text-muted);font-size:12px;">${time}</span>
-                `;
+                            <span><strong>${gameType}</strong> <span style="color:var(--text-muted);font-size:13px;">${detail}</span></span>
+                            <span style="color:${isWin ? '#4caf50' : 'var(--red)'};font-weight:600;">${isWin ? '✅ Win' : '❌ Loss'}</span>
+                            <span style="color:${isWin ? '#4caf50' : 'var(--red)'};font-weight:700;">${amount}</span>
+                            <span style="color:var(--text-muted);font-size:12px;">${time}</span>
+                        `;
                 historyList.appendChild(item);
             });
         }
@@ -3531,37 +3633,303 @@
 
         // ─── PRESETS ───
         aviPresets.forEach(btn => {
-            btn.addEventListener('click', () => { aviBet.value = parseInt(btn.dataset.amount) || 100; });
+            btn.addEventListener('click', () => {
+                aviBet.value = parseInt(btn.dataset.amount) || 100;
+                aviPresets.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
         });
         spinPresets.forEach(btn => {
-            btn.addEventListener('click', () => { spinBet.value = parseInt(btn.dataset.amount) || 100; });
+            btn.addEventListener('click', () => {
+                spinBet.value = parseInt(btn.dataset.amount) || 100;
+            });
         });
 
         // ────────────────────────────────────────────────────────────────
-        //  AVIATOR GAME
+        //  AVIATOR GAME — SCROLLING GRAPH (plane stays on left)
         // ────────────────────────────────────────────────────────────────
+
+        function resizeCanvas() {
+            const rect = graphWrap.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            const w = rect.width;
+            const h = rect.height;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+            return { w, h };
+        }
+
+        let canvasWidth = 0,
+            canvasHeight = 0;
+
+        // ─── Draw scrolling graph with plane at fixed left position ───
+        function drawGraph(points, currentMult, crashed, cashedOut) {
+            const rect = graphWrap.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+            canvasWidth = w;
+            canvasHeight = h;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // ── Background ──
+            const grad = ctx.createRadialGradient(w / 2, h * 0.8, 20, w / 2, h * 0.8, w * 0.8);
+            grad.addColorStop(0, '#0f1a2e');
+            grad.addColorStop(1, '#060a14');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+
+            // ── Grid lines ──
+            ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 6; i++) {
+                const y = h * 0.1 + (h * 0.8) * (i / 5);
+                ctx.beginPath();
+                ctx.moveTo(20, y);
+                ctx.lineTo(w - 20, y);
+                ctx.stroke();
+            }
+            for (let i = 0; i < 8; i++) {
+                const x = 20 + (w - 40) * (i / 7);
+                ctx.beginPath();
+                ctx.moveTo(x, h * 0.1);
+                ctx.lineTo(x, h * 0.9);
+                ctx.stroke();
+            }
+
+            // ── If no points, show idle state ──
+            if (!points || points.length < 2) {
+                ctx.fillStyle = 'rgba(255,255,255,0.04)';
+                ctx.font = '16px Rajdhani, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🛫 Ready to fly', w / 2, h / 2);
+                ctx.fillStyle = 'rgba(255,255,255,0.08)';
+                ctx.font = '12px Rajdhani, sans-serif';
+                ctx.fillText('Place a bet and click Fly', w / 2, h / 2 + 30);
+                return;
+            }
+
+            // ── Configuration ──
+            const planeX = w * 0.22; // plane fixed at 22% from left
+            const padTop = 30,
+                padBottom = 30;
+            const graphH = h - padTop - padBottom;
+            const graphW = w - planeX - 20; // space from plane to right edge
+
+            // Determine multiplier range for Y axis
+            const maxMult = Math.max(currentMult * 1.25, 1.5);
+            const minMult = 1.0;
+
+            function mapY(mult) {
+                return padTop + graphH - ((mult - minMult) / (maxMult - minMult)) * graphH;
+            }
+
+            // ── Get visible points (last N) ──
+            const maxVisible = 80;
+            const visible = points.slice(-maxVisible);
+            if (visible.length < 2) return;
+
+            // ── Draw the path ──
+            // Each point's X is based on its age, with the most recent at planeX
+            const len = visible.length;
+
+            // Build path
+            ctx.beginPath();
+            const firstY = mapY(visible[0].y);
+            const firstX = planeX - (len - 1) * (graphW / (maxVisible - 1));
+            ctx.moveTo(firstX, firstY);
+
+            for (let i = 0; i < len; i++) {
+                const age = len - 1 - i; // 0 = most recent
+                const x = planeX - age * (graphW / (maxVisible - 1));
+                const y = mapY(visible[i].y);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+
+            // ── Stroke ──
+            const isCrashed = crashed || (visible.length > 0 && visible[visible.length - 1].y >= currentMult && currentMult >
+                1);
+            const strokeColor = isCrashed ? '#e53935' : (cashedOut ? '#4caf50' : '#e53935');
+            ctx.strokeStyle = strokeColor;
+            ctx.lineWidth = 3;
+            ctx.shadowColor = strokeColor;
+            ctx.shadowBlur = 12;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // ── Fill under curve ──
+            const gradUnder = ctx.createLinearGradient(0, padTop, 0, padTop + graphH);
+            gradUnder.addColorStop(0, 'rgba(229,57,53,0.15)');
+            gradUnder.addColorStop(1, 'rgba(229,57,53,0)');
+
+            // Build fill path
+            const lastIdx = len - 1;
+            const lastX = planeX;
+            const lastY = mapY(visible[lastIdx].y);
+            ctx.lineTo(lastX, padTop + graphH);
+            ctx.lineTo(firstX, padTop + graphH);
+            ctx.closePath();
+            ctx.fillStyle = gradUnder;
+            ctx.fill();
+
+            // ── Draw glow dots on curve ──
+            for (let i = Math.max(0, len - 30); i < len - 1; i++) {
+                const age = len - 1 - i;
+                const x = planeX - age * (graphW / (maxVisible - 1));
+                const y = mapY(visible[i].y);
+                const alpha = 0.05 + ((i + 1) / len) * 0.15;
+                const size = 2 + ((i + 1) / len) * 2;
+                ctx.fillStyle = `rgba(229,57,53,${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // ── Draw plane at the most recent point ──
+            const planeY = mapY(visible[lastIdx].y);
+
+            // Glow behind plane
+            const glow = ctx.createRadialGradient(planeX, planeY, 2, planeX, planeY, 50);
+            glow.addColorStop(0, 'rgba(229,57,53,0.25)');
+            glow.addColorStop(1, 'rgba(229,57,53,0)');
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(planeX, planeY, 50, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Plane emoji with slight rotation based on angle
+            let angle = 0;
+            if (len > 2) {
+                const prevIdx = len - 2;
+                const prevAge = len - 1 - prevIdx;
+                const prevX = planeX - prevAge * (graphW / (maxVisible - 1));
+                const prevY = mapY(visible[prevIdx].y);
+                angle = Math.atan2(planeY - prevY, planeX - prevX);
+            }
+            ctx.save();
+            ctx.translate(planeX, planeY);
+            ctx.rotate(angle + 0.1);
+            ctx.font = '32px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor = 'rgba(229,57,53,0.5)';
+            ctx.shadowBlur = 25;
+            ctx.fillStyle = '#fff';
+            ctx.fillText('✈️', 0, 0);
+            ctx.restore();
+
+            // ── Trail behind plane (dots trailing) ──
+            const trailLen = Math.min(25, len - 1);
+            for (let i = 1; i <= trailLen; i++) {
+                const idx = len - 1 - i;
+                if (idx < 0) break;
+                const age = len - 1 - idx;
+                const x = planeX - age * (graphW / (maxVisible - 1));
+                const y = mapY(visible[idx].y);
+                const alpha = (1 - i / trailLen) * 0.5;
+                const size = 3 + (1 - i / trailLen) * 4;
+                ctx.fillStyle = `rgba(229,57,53,${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // ── Crash X mark ──
+            if (crashed && visible.length > 0) {
+                const crashX = planeX;
+                const crashY = planeY;
+                ctx.strokeStyle = '#e53935';
+                ctx.lineWidth = 5;
+                ctx.shadowColor = '#e53935';
+                ctx.shadowBlur = 25;
+                const s = 20;
+                ctx.beginPath();
+                ctx.moveTo(crashX - s, crashY - s);
+                ctx.lineTo(crashX + s, crashY + s);
+                ctx.moveTo(crashX + s, crashY - s);
+                ctx.lineTo(crashX - s, crashY + s);
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+                // Big red text
+                ctx.font = 'bold 22px Orbitron, monospace';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillStyle = '#e53935';
+                ctx.shadowColor = '#e53935';
+                ctx.shadowBlur = 20;
+                ctx.fillText('💥 CRASH', planeX, planeY - 40);
+                ctx.shadowBlur = 0;
+            }
+
+            // ── Cash out marker ──
+            if (cashedOut && visible.length > 0) {
+                ctx.font = '28px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.shadowColor = '#4caf50';
+                ctx.shadowBlur = 25;
+                ctx.fillText('💰', planeX, planeY - 30);
+                ctx.shadowBlur = 0;
+                ctx.font = 'bold 16px Orbitron, monospace';
+                ctx.fillStyle = '#4caf50';
+                ctx.shadowColor = '#4caf50';
+                ctx.shadowBlur = 15;
+                ctx.fillText('CASHED OUT', planeX, planeY - 55);
+                ctx.shadowBlur = 0;
+            }
+
+            // ── Multiplier label near plane ──
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.font = '12px Orbitron, monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText(formatNum(currentMult) + 'x', planeX, planeY + 16);
+
+            // ── Small multiplier labels on curve ──
+            for (let i = 0; i < len; i += Math.max(1, Math.floor(len / 8))) {
+                const age = len - 1 - i;
+                const x = planeX - age * (graphW / (maxVisible - 1));
+                const y = mapY(visible[i].y);
+                if (x > 20 && x < planeX - 10) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+                    ctx.font = '9px Orbitron, monospace';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    ctx.fillText(formatNum(visible[i].y) + 'x', x, y - 4);
+                }
+            }
+        }
+
+        let graphPoints = [];
 
         function resetAviator() {
             stopAviator();
-            aviatorPlane.style.left = '15%';
-            aviatorPlane.style.top = '60%';
-            aviatorPlane.style.transform = 'scale(1)';
-            aviatorPlane.style.opacity = '1';
-            aviatorTrail.innerHTML = '';
+            graphPoints = [];
+            aviatorState.points = [];
             aviatorMultiplier.textContent = '1.00x';
-            aviatorMultiplier.className = 'multiplier-display green';
-            aviatorStatus.textContent = '🟢 waiting';
+            aviatorMultiplier.className = 'multiplier-overlay green';
+            statusDot.className = 'dot green';
+            statusText.textContent = 'waiting';
             aviResult.textContent = 'Place a bet and fly!';
             aviResult.className = 'result-box info';
             aviStartBtn.disabled = false;
             aviCashBtn.disabled = true;
+            drawGraph([], 1.0, false, false);
         }
 
         function startAviator() {
             if (aviatorState.running) return;
             const bet = parseInt(aviBet.value) || 100;
-            if (bet < 10) { aviResult.textContent = '❌ Minimum bet is ₦10';
-                aviResult.className = 'result-box lose'; return; }
+            if (bet < 10) {
+                aviResult.textContent = '❌ Minimum bet is ₦10';
+                aviResult.className = 'result-box lose';
+                return;
+            }
             if (!currentUser || currentUser.balance < bet) {
                 aviResult.textContent = '❌ Insufficient balance';
                 aviResult.className = 'result-box lose';
@@ -3576,20 +3944,18 @@
             aviatorState.betAmount = bet;
             aviatorState.startTime = performance.now();
             aviatorState.crashMultiplier = getAviatorCrashMultiplier(bet);
+            aviatorState.points = [{ x: 0, y: 1.0 }];
+
+            graphPoints = [{ x: 0, y: 1.0 }];
 
             aviStartBtn.disabled = true;
             aviCashBtn.disabled = false;
             aviatorMultiplier.textContent = '1.00x';
-            aviatorMultiplier.className = 'multiplier-display green';
-            aviatorStatus.textContent = '🟢 flying...';
+            aviatorMultiplier.className = 'multiplier-overlay green';
+            statusDot.className = 'dot yellow';
+            statusText.textContent = 'flying...';
             aviResult.textContent = '✈️ Flying... cash out!';
             aviResult.className = 'result-box info';
-
-            aviatorPlane.style.left = '15%';
-            aviatorPlane.style.top = '60%';
-            aviatorPlane.style.transform = 'scale(1)';
-            aviatorPlane.style.opacity = '1';
-            aviatorTrail.innerHTML = '';
 
             playJetSound();
 
@@ -3600,63 +3966,39 @@
         function aviatorLoop(timestamp) {
             if (!aviatorState.running) return;
             const elapsed = (timestamp - aviatorState.startTime) / 1000;
-            let mult = 1.0 + Math.pow(elapsed * 0.5, 1.5) * 0.5;
+            let mult = 1.0 + Math.pow(elapsed * 0.45, 1.4) * 0.6;
             mult = Math.min(mult, aviatorState.crashMultiplier);
             aviatorState.multiplier = mult;
 
             aviatorMultiplier.textContent = formatNum(mult) + 'x';
 
-            const progress = Math.min((mult - 1) / 12, 1);
-            const startX = 15,
-                endX = 75;
-            const startY = 60,
-                endY = 20;
-            const x = startX + (endX - startX) * progress;
-            const y = startY - (startY - endY) * progress - Math.sin(progress * Math.PI) * 6;
-            aviatorPlane.style.left = x + '%';
-            aviatorPlane.style.top = y + '%';
-            aviatorPlane.style.transform = `scale(${1 + progress * 0.2}) rotate(${progress * 8}deg)`;
+            const px = aviatorState.points.length;
+            const py = mult;
+            aviatorState.points.push({ x: px, y: py });
+            graphPoints.push({ x: px, y: py });
 
-            if (progress > 0.05) {
-                const trailDot = document.createElement('div');
-                trailDot.className = 'dot';
-                trailDot.style.left = (x - 2 + Math.random() * 4) + '%';
-                trailDot.style.top = (y - 2 + Math.random() * 4) + '%';
-                trailDot.style.opacity = 0.3 - progress * 0.2;
-                aviatorTrail.appendChild(trailDot);
-                if (aviatorTrail.children.length > 35) {
-                    aviatorTrail.removeChild(aviatorTrail.firstChild);
-                }
+            if (aviatorState.points.length > 300) {
+                aviatorState.points = aviatorState.points.slice(-200);
+                graphPoints = graphPoints.slice(-200);
             }
+
+            const isGreen = mult < aviatorState.crashMultiplier * 0.85;
+            aviatorMultiplier.className = `multiplier-overlay ${isGreen ? 'green' : 'red'}`;
+
+            drawGraph(graphPoints, mult, false, false);
 
             if (mult >= aviatorState.crashMultiplier && !aviatorState.cashedOut) {
                 aviatorState.crashed = true;
                 aviatorState.running = false;
                 aviCashBtn.disabled = true;
                 aviStartBtn.disabled = false;
-                aviatorMultiplier.className = 'multiplier-display red';
-                aviatorStatus.textContent = '💥 crashed!';
+                aviatorMultiplier.className = 'multiplier-overlay red';
+                statusDot.className = 'dot red';
+                statusText.textContent = 'crashed!';
                 aviResult.textContent = `💥 Crashed at ${formatNum(mult)}x! Lost ₦${aviatorState.betAmount}`;
                 aviResult.className = 'result-box lose';
                 playCrashSound();
-                aviatorPlane.style.transform = 'scale(0.1) rotate(180deg)';
-                aviatorPlane.style.opacity = '0';
-                for (let i = 0; i < 15; i++) {
-                    const particle = document.createElement('div');
-                    particle.style.cssText = `
-                        position: absolute; width: 5px; height: 5px; border-radius: 50%;
-                        background: rgba(229,57,53,${0.3 + Math.random() * 0.5});
-                        left: ${x + Math.random() * 8 - 4}%;
-                        top: ${y + Math.random() * 8 - 4}%;
-                        pointer-events: none;
-                        z-index: 2;
-                        animation: explode 0.7s ease-out forwards;
-                    `;
-                    particle.style.setProperty('--tx', (Math.random() - 0.5) * 120 + 'px');
-                    particle.style.setProperty('--ty', (Math.random() - 0.5) * 120 + 'px');
-                    aviatorSky.appendChild(particle);
-                    setTimeout(() => particle.remove(), 700);
-                }
+                drawGraph(graphPoints, mult, true, false);
                 aviatorHistoryData.push({ result: 'lose', mult: formatNum(mult), bet: aviatorState.betAmount,
                     timestamp: new Date().toISOString() });
                 updateAviatorHistory();
@@ -3679,20 +4021,12 @@
             aviCashBtn.disabled = true;
             aviStartBtn.disabled = false;
             addBalance(win);
-            aviatorMultiplier.className = 'multiplier-display green';
-            aviatorStatus.textContent = '💰 cashed out!';
+            aviatorMultiplier.className = 'multiplier-overlay green';
+            statusDot.className = 'dot green';
+            statusText.textContent = 'cashed out!';
             aviResult.textContent = `💰 Cashed out at ${formatNum(mult)}x! Won ₦${formatNum(win)}`;
             aviResult.className = 'result-box win';
-            aviatorPlane.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-            aviatorPlane.style.transform = 'scale(1.5) rotate(20deg) translate(40px, -60px)';
-            aviatorPlane.style.opacity = '0';
-            setTimeout(() => {
-                aviatorPlane.style.transition = 'none';
-                aviatorPlane.style.transform = 'scale(1) rotate(0deg)';
-                aviatorPlane.style.opacity = '1';
-                aviatorPlane.style.left = '15%';
-                aviatorPlane.style.top = '60%';
-            }, 600);
+            drawGraph(graphPoints, mult, false, true);
             aviatorHistoryData.push({ result: 'win', mult: formatNum(mult), win: win, bet: bet,
                 timestamp: new Date().toISOString() });
             updateAviatorHistory();
@@ -3710,14 +4044,12 @@
             aviCashBtn.disabled = true;
             aviStartBtn.disabled = false;
             aviatorMultiplier.textContent = '1.00x';
-            aviatorMultiplier.className = 'multiplier-display green';
-            aviatorStatus.textContent = '🟢 waiting';
-            aviatorPlane.style.transition = 'none';
-            aviatorPlane.style.left = '15%';
-            aviatorPlane.style.top = '60%';
-            aviatorPlane.style.transform = 'scale(1)';
-            aviatorPlane.style.opacity = '1';
-            aviatorTrail.innerHTML = '';
+            aviatorMultiplier.className = 'multiplier-overlay green';
+            statusDot.className = 'dot green';
+            statusText.textContent = 'waiting';
+            graphPoints = [];
+            aviatorState.points = [];
+            drawGraph([], 1.0, false, false);
         }
 
         function getAviatorCrashMultiplier(bet) {
@@ -3736,19 +4068,30 @@
         }
 
         function updateAviatorHistory() {
-            aviHistory.innerHTML = '';
-            const items = aviatorHistoryData.slice(-20);
+            aviHistoryChips.innerHTML = '';
+            const items = aviatorHistoryData.slice(-15);
             items.forEach(item => {
-                const dot = document.createElement('div');
-                dot.className = `dot ${item.result}`;
-                dot.textContent = item.mult || '?';
-                if (item.win) dot.title = `+₦${formatNum(item.win)}`;
-                aviHistory.appendChild(dot);
+                const chip = document.createElement('span');
+                chip.className = `chip ${item.result}`;
+                chip.textContent = item.mult || '?';
+                aviHistoryChips.appendChild(chip);
             });
         }
 
         aviStartBtn.addEventListener('click', startAviator);
         aviCashBtn.addEventListener('click', cashOutAviator);
+
+        // ─── Canvas resize observer ───
+        const ro = new ResizeObserver(() => {
+            resizeCanvas();
+            if (graphPoints.length > 0) {
+                drawGraph(graphPoints, aviatorState.multiplier || 1.0, aviatorState.crashed || false, aviatorState
+                    .cashedOut || false);
+            } else {
+                drawGraph([], 1.0, false, false);
+            }
+        });
+        ro.observe(graphWrap);
 
         // ────────────────────────────────────────────────────────────────
         //  SPIN GAME
@@ -3764,13 +4107,17 @@
             spinDownBtn.disabled = false;
             spinState.spinning = false;
             spinState.angle = 0;
+            updateSpinHistory();
         }
 
         async function doSpin(pick) {
             if (spinState.spinning) return;
             const bet = parseInt(spinBet.value) || 100;
-            if (bet < 10) { spinResult.textContent = '❌ Minimum bet is ₦10';
-                spinResult.className = 'result-box lose'; return; }
+            if (bet < 10) {
+                spinResult.textContent = '❌ Minimum bet is ₦10';
+                spinResult.className = 'result-box lose';
+                return;
+            }
             if (!currentUser || currentUser.balance < bet) {
                 spinResult.textContent = '❌ Insufficient balance';
                 spinResult.className = 'result-box lose';
@@ -3790,7 +4137,6 @@
             const result = Math.random() < 0.5 ? 'up' : 'down';
             spinState.result = result;
 
-            // 5 second spin: fast then slow
             const rotations = 4 + Math.floor(Math.random() * 3);
             const targetAngle = result === 'up' ? 0 : 180;
             const currentAngle = spinState.angle || 0;
@@ -3826,15 +4172,15 @@
         }
 
         function updateSpinHistory() {
-            spinHistory.innerHTML = '';
+            if (!spinHistoryDots) return;
+            spinHistoryDots.innerHTML = '';
             const items = spinHistoryData.slice(-20);
             items.forEach(item => {
                 const dot = document.createElement('div');
                 dot.className = `dot ${item.result}`;
                 const label = item.dir ? (item.dir === 'up' ? '⬆' : '⬇') : '?';
                 dot.textContent = label;
-                if (item.win) dot.title = `+₦${formatNum(item.win)}`;
-                spinHistory.appendChild(dot);
+                spinHistoryDots.appendChild(dot);
             });
         }
 
@@ -4188,33 +4534,33 @@
                     allHistory.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
                     card.innerHTML = `
-                        <div class="user-header">
-                            <span class="uname">${key}</span>
-                            <span class="ubadge ${isVerified ? 'verified' : 'unverified'}">${isVerified ? '✓ Verified' : '⚠️ Unverified'}</span>
-                        </div>
-                        <div class="user-details">
-                            <span><span class="label">Email:</span> ${user.email || 'N/A'}</span>
-                            <span><span class="label">Phone:</span> ${user.phone || 'N/A'}</span>
-                            <span><span class="label">Balance:</span> ₦${user.balance || 0}</span>
-                            <span><span class="label">Created:</span> ${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}</span>
-                            <span><span class="label">Total Games:</span> ${allHistory.length}</span>
-                            <span><span class="label">Wins/Losses:</span> ${allHistory.filter(g => g.result === 'win').length}/${allHistory.filter(g => g.result === 'lose').length}</span>
-                        </div>
-                        <div class="user-history">
-                            ${allHistory.slice(0, 10).map(h => 
-                                `<div class="hitem"><span>${h.mult ? '✈️ ' + h.mult + 'x' : '🍾 ' + (h.dir === 'up' ? '⬆' : '⬇')}</span> <span class="hresult ${h.result}">${h.result === 'win' ? '✅ +₦' + (h.win ? formatNum(h.win) : '?') : '❌ -₦' + (h.bet || '?')}</span> <span style="font-size:10px;color:var(--text-muted);">${new Date(h.timestamp).toLocaleDateString()}</span></div>`
-                            ).join('')}
-                            ${allHistory.length === 0 ? '<div style="color:var(--text-muted);font-size:11px;">No history yet.</div>' : ''}
-                            ${allHistory.length > 10 ? `<div style="color:var(--text-muted);font-size:11px;">+ ${allHistory.length - 10} more...</div>` : ''}
-                        </div>
-                        <div class="user-actions">
-                            <button class="pbtn blue" data-action="set-balance" data-username="${key}">💰 Balance</button>
-                            <button class="pbtn green" data-action="verify" data-username="${key}">✅ Verify</button>
-                            <button class="pbtn orange" data-action="unverify" data-username="${key}">⚠️ Unverify</button>
-                            <button class="pbtn purple" data-action="clear-history" data-username="${key}">🗑️ Clear Hist</button>
-                            <button class="pbtn red" data-action="delete" data-username="${key}">🗑️ Delete</button>
-                        </div>
-                    `;
+                                <div class="user-header">
+                                    <span class="uname">${key}</span>
+                                    <span class="ubadge ${isVerified ? 'verified' : 'unverified'}">${isVerified ? '✓ Verified' : '⚠️ Unverified'}</span>
+                                </div>
+                                <div class="user-details">
+                                    <span><span class="label">Email:</span> ${user.email || 'N/A'}</span>
+                                    <span><span class="label">Phone:</span> ${user.phone || 'N/A'}</span>
+                                    <span><span class="label">Balance:</span> ₦${user.balance || 0}</span>
+                                    <span><span class="label">Created:</span> ${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}</span>
+                                    <span><span class="label">Total Games:</span> ${allHistory.length}</span>
+                                    <span><span class="label">Wins/Losses:</span> ${allHistory.filter(g => g.result === 'win').length}/${allHistory.filter(g => g.result === 'lose').length}</span>
+                                </div>
+                                <div class="user-history">
+                                    ${allHistory.slice(0, 10).map(h => 
+                                        `<div class="hitem"><span>${h.mult ? '✈️ ' + h.mult + 'x' : '🍾 ' + (h.dir === 'up' ? '⬆' : '⬇')}</span> <span class="hresult ${h.result}">${h.result === 'win' ? '✅ +₦' + (h.win ? formatNum(h.win) : '?') : '❌ -₦' + (h.bet || '?')}</span> <span style="font-size:10px;color:var(--text-muted);">${new Date(h.timestamp).toLocaleDateString()}</span></div>`
+                                    ).join('')}
+                                    ${allHistory.length === 0 ? '<div style="color:var(--text-muted);font-size:11px;">No history yet.</div>' : ''}
+                                    ${allHistory.length > 10 ? `<div style="color:var(--text-muted);font-size:11px;">+ ${allHistory.length - 10} more...</div>` : ''}
+                                </div>
+                                <div class="user-actions">
+                                    <button class="pbtn blue" data-action="set-balance" data-username="${key}">💰 Balance</button>
+                                    <button class="pbtn green" data-action="verify" data-username="${key}">✅ Verify</button>
+                                    <button class="pbtn orange" data-action="unverify" data-username="${key}">⚠️ Unverify</button>
+                                    <button class="pbtn purple" data-action="clear-history" data-username="${key}">🗑️ Clear Hist</button>
+                                    <button class="pbtn red" data-action="delete" data-username="${key}">🗑️ Delete</button>
+                                </div>
+                            `;
 
                     panelUsers.appendChild(card);
                 }
@@ -4386,25 +4732,25 @@
 
         if ('serviceWorker' in navigator) {
             const swCode = `
-                self.addEventListener('install', e => {
-                    e.waitUntil(
-                        caches.open('sporty-v1').then(cache => {
-                            return cache.addAll(['/']);
-                        })
-                    );
-                    self.skipWaiting();
-                });
-                self.addEventListener('activate', e => {
-                    e.waitUntil(clients.claim());
-                });
-                self.addEventListener('fetch', e => {
-                    e.respondWith(
-                        caches.match(e.request).then(res => {
-                            return res || fetch(e.request);
-                        })
-                    );
-                });
-            `;
+                        self.addEventListener('install', e => {
+                            e.waitUntil(
+                                caches.open('sporty-v1').then(cache => {
+                                    return cache.addAll(['/']);
+                                })
+                            );
+                            self.skipWaiting();
+                        });
+                        self.addEventListener('activate', e => {
+                            e.waitUntil(clients.claim());
+                        });
+                        self.addEventListener('fetch', e => {
+                            e.respondWith(
+                                caches.match(e.request).then(res => {
+                                    return res || fetch(e.request);
+                                })
+                            );
+                        });
+                    `;
             const swBlob = new Blob([swCode], { type: 'application/javascript' });
             const swUrl = URL.createObjectURL(swBlob);
             navigator.serviceWorker.register(swUrl).then(() => {
@@ -4422,7 +4768,13 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                // No canvas to resize
+                resizeCanvas();
+                if (graphPoints.length > 0) {
+                    drawGraph(graphPoints, aviatorState.multiplier || 1.0, aviatorState.crashed || false, aviatorState
+                        .cashedOut || false);
+                } else {
+                    drawGraph([], 1.0, false, false);
+                }
             }, 200);
         });
 
@@ -4461,7 +4813,11 @@
                 console.warn('EmailJS init warning:', e);
             }
 
-            restoreSession().then(() => {});
+            restoreSession().then(() => {
+                setTimeout(() => {
+                    updateSpinHistory();
+                }, 300);
+            });
 
             if (isAdminMode) {
                 renderAdminChat();
@@ -4485,6 +4841,8 @@
             setTimeout(() => {
                 resetAviator();
                 resetSpin();
+                resizeCanvas();
+                drawGraph([], 1.0, false, false);
             }, 100);
 
             document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
@@ -4493,15 +4851,6 @@
             document.getElementById('gamesPage').classList.add('active');
 
             setTimeout(checkInstallButton, 500);
-
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes explode {
-                    0% { transform: translate(0,0) scale(1); opacity: 1; }
-                    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
         })();
 
         // Keyboard shortcuts
@@ -4543,8 +4892,8 @@
         });
 
         console.log('⚽ Sporty Games loaded!');
+        console.log('✈️ Aviator: scrolling graph – plane stays on the left, graph moves with it');
         console.log('📱 PWA enabled with persistent session');
-        console.log('📱 Bottom tabs: Games | Me');
         console.log('✈️ Aviator: Space to fly/cash out (with sound)');
         console.log('🍾 Spin: Pick UP or DOWN for 2x (5-second spin)');
         console.log('🔑 No free money - start with ₦0');
